@@ -26,3 +26,20 @@ body {
     font-family: 'Cuprum', sans-serif;
     font-size: 1.2em;
 }
+
+.containerDados {
+    background-color: rgba(10, 2, 48, 0.2);
+    display: none;
+}
+
+.tituloDados {
+    color: #ffffff;
+    padding-left: 7px;
+    margin-bottom: 30px;
+    font-family: 'Cuprum', sans-serif;
+    font-size: 1.2em;
+}
+.dados {
+    color: #d8d1d1 !important;
+    font-size: 1.1em !important;
+}
