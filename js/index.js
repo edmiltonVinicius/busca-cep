@@ -13,6 +13,10 @@ function mostrarBuscar(){
     resultado.style.display='none'
     btnBuscar.style.display='block'
     document.querySelector('input[name=entradaCep]').value=''
+    document.querySelector('.endereco').innerHTML=''
+    document.querySelector('.bairro').innerHTML=''
+    document.querySelector('.cidade').innerHTML=''
+    document.querySelector('.uf').innerHTML=''
 }
 
 function validaEntrada(){
