@@ -1,28 +1,34 @@
 function validaEntrada() {
     let entrada = document.querySelector('input[name=entradaCep]').value
+    let verificador
     entrada = entrada.replace('-', '')
 
     if (entrada.length < 8 || entrada.length > 9) {
         exibirErro('CEP informado está inválido!')
     } else {
-        consultaCep(entrada)
+        verificador = Number(entrada) ? consultaCep(entrada) : exibirErro('Você digitou letras, digite apenas números!')
+        
     }
 
 }
 function escondeBuscar() {
     const btnBuscar = document.querySelector('.busca')
     const resultado = document.querySelector('.containerDados')
+    const info = document.querySelector('.info')
 
     btnBuscar.style.display = 'none'
+    info.style.display = 'none'
     resultado.style.display = 'block'
 }
 
 function mostrarBuscar() {
     const btnBuscar = document.querySelector('.busca')
     const resultado = document.querySelector('.containerDados')
+    const info = document.querySelector('.info')
 
     resultado.style.display = 'none'
     btnBuscar.style.display = 'block'
+    info.style.display = 'block'
     document.querySelector('input[name=entradaCep]').value = ''
     document.querySelector('.endereco').innerHTML = ''
     document.querySelector('.bairro').innerHTML = ''
