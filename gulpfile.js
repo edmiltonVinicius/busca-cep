@@ -11,6 +11,7 @@ const minCss = () => {
             "maxLineLen": 80,
             "uglycomments": true 
         }))
+
         .pipe(rename('style.min.css'))
         .pipe(gulp.dest('css/'))
 }
