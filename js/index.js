@@ -7,49 +7,7 @@ function validaEntrada() {
         exibirErro('CEP informado está inválido!')
     } else {
         verificador = Number(entrada) ? consultaCep(entrada) : exibirErro('Você digitou letras, digite apenas números!')
-        
     }
-
-}
-function escondeBuscar() {
-    const btnBuscar = document.querySelector('.busca')
-    const resultado = document.querySelector('.containerDados')
-    const info = document.querySelector('.info')
-
-    btnBuscar.style.display = 'none'
-    info.style.display = 'none'
-    resultado.style.display = 'block'
-}
-
-function mostrarBuscar() {
-    const btnBuscar = document.querySelector('.busca')
-    const resultado = document.querySelector('.containerDados')
-    const info = document.querySelector('.info')
-
-    resultado.style.display = 'none'
-    btnBuscar.style.display = 'block'
-    info.style.display = 'block'
-    document.querySelector('input[name=entradaCep]').value = ''
-    document.querySelector('.endereco').innerHTML = ''
-    document.querySelector('.bairro').innerHTML = ''
-    document.querySelector('.cidade').innerHTML = ''
-    document.querySelector('.uf').innerHTML = ''
-}
-
-function exibirErro(texto) {
-    const divErro = document.querySelector('.divErro')
-    const textoErro = document.querySelector('.textoErro')
-    textoErro.innerHTML=texto
-    document.querySelector('.busca').style.display='none'
-    divErro.style.display='block'
-}
-
-function esconderErro() {
-    const divErro = document.querySelector('.divErro')
-    const textoErro = document.querySelector('.textoErro')
-    textoErro.innerHTML=''
-    divErro.style.display='none'
-    document.querySelector('.busca').style.display='block'
 }
 
 function consultaCep(c) {
@@ -81,6 +39,48 @@ function consultaCep(c) {
                 exibirErro('Ocorreu algum erro, tente novamente!')
             }
         } 
-
     }
 }
+
+function escondeBuscar() {
+    const btnBuscar = document.querySelector('.busca-js')
+    const resultado = document.querySelector('.containerDados')
+    const info = document.querySelector('.info')
+
+    btnBuscar.style.display = 'none'
+    info.style.display = 'none'
+    resultado.style.display = 'block'
+}
+
+function mostrarBuscar() {
+    const btnBuscar = document.querySelector('.busca-js')
+    const resultado = document.querySelector('.containerDados')
+    const info = document.querySelector('.info')
+
+    resultado.style.display = 'none'
+    btnBuscar.style.display = 'block'
+    info.style.display = 'block'
+    document.querySelector('input[name=entradaCep]').value = ''
+    document.querySelector('.endereco').innerHTML = ''
+    document.querySelector('.bairro').innerHTML = ''
+    document.querySelector('.cidade').innerHTML = ''
+    document.querySelector('.uf').innerHTML = ''
+}
+
+function exibirErro(texto) {
+    const divErro = document.querySelector('.divErro')
+    const textoErro = document.querySelector('.textoErro')
+    textoErro.innerHTML=texto
+    document.querySelector('.busca').style.display='none'
+    divErro.style.display='block'
+}
+
+function esconderErro() {
+    const divErro = document.querySelector('.divErro')
+    const textoErro = document.querySelector('.textoErro')
+    textoErro.innerHTML=''
+    divErro.style.display='none'
+    document.querySelector('.busca').style.display='block'
+}
+
+
