@@ -71,7 +71,7 @@ function exibirErro(texto) {
     const divErro = document.querySelector('.divErro')
     const textoErro = document.querySelector('.textoErro')
     textoErro.innerHTML=texto
-    document.querySelector('.busca').style.display='none'
+    document.querySelector('.busca-js').style.display='none'
     divErro.style.display='block'
 }
 
