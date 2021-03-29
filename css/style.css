@@ -5,9 +5,9 @@ body {
 
 .fundo {
     background-image: url('../img/fundo-cidade.jpg');
-    background-position: center bottom;
+    background-position: center ;
     background-repeat: no-repeat;
-    background-size: 100% 20%;
+    background-size: cover;
     width: 100%;
     height: 100vh;
 }
