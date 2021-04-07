@@ -8,6 +8,8 @@ Estou utilizando:
 - Ajax
 - Css3
 
+Link do projeto hospedado no heroku: http://projeto-busca-cep.herokuapp.com/
+
 A API para consulta dos ceps:
 viacep.com.br
 
