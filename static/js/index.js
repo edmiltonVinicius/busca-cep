@@ -1,22 +1,25 @@
-function validaEntrada() {
-    let entrada = document.querySelector('input[name=entradaCep]').value
-    let verificador
-    entrada = entrada.replace('-', '')
+(() => {
+    document.querySelector('[name="entradaCep"]').addEventListener('keypress', function(e){
+        e.keyCode < 48 || e.keyCode > 57 ? e.preventDefault() : ''
+    })
+})()
 
-    if (entrada.length < 8 || entrada.length > 9) {
+function consultarCep() {
+    let entrada = document.querySelector('input[name=entradaCep]').value
+ 
+    if (entrada.length == 0 || entrada == '') {
+        exibirErro('Por favor Insira algum cep!')
+    } else if(entrada.length < 8 ){
         exibirErro('CEP informado está inválido!')
-    } else {
-        verificador = Number(entrada) ? consultaCep(entrada) : exibirErro('Você digitou letras, digite apenas números!')
+    }
+     else {
+        consultaCep(entrada)
     }
 }
 
 function consultaCep(c) {
     const xhr = new XMLHttpRequest()
     const cep = c
-    const endereco = document.querySelector('.endereco')
-    const bairro = document.querySelector('.bairro')
-    const cidade = document.querySelector('.cidade')
-    const uf = document.querySelector('.uf')
 
     xhr.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/')
     xhr.send(null)
@@ -28,10 +31,7 @@ function consultaCep(c) {
                 resultado = JSON.parse(xhr.responseText)
                 if (!('erro' in resultado)) {
                     escondeBuscar()
-                    endereco.innerHTML = resultado.logradouro
-                    bairro.innerHTML = resultado.bairro
-                    cidade.innerHTML = resultado.localidade
-                    uf.innerHTML = resultado.uf
+                    exbibiResultado(resultado)
                 } else {
                     exibirErro('CEP NÃO ENCONTRADO!')
                 }
@@ -40,6 +40,13 @@ function consultaCep(c) {
             }
         } 
     }
+}
+
+function exbibiResultado({ logradouro, bairro, localidade, uf }){
+    document.querySelector('.endereco').innerHTML = logradouro
+    document.querySelector('.bairro').innerHTML = bairro
+    document.querySelector('.cidade').innerHTML = localidade
+    document.querySelector('.uf').innerHTML = uf
 }
 
 function escondeBuscar() {
@@ -73,6 +80,7 @@ function exibirErro(texto) {
     textoErro.innerHTML=texto
     document.querySelector('.busca-js').style.display='none'
     divErro.style.display='block'
+    document.querySelector('input[name=entradaCep]').focus()
 }
 
 function esconderErro() {
@@ -80,7 +88,8 @@ function esconderErro() {
     const textoErro = document.querySelector('.textoErro')
     textoErro.innerHTML=''
     divErro.style.display='none'
-    document.querySelector('.busca').style.display='block'
+    document.querySelector('.busca-js').style.display='block'
+    document.querySelector('input[name=entradaCep]').focus()
 }
 
 

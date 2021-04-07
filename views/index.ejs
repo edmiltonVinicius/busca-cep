@@ -21,20 +21,20 @@
             </div>
             <div class="row">
                 <div class="input-group input-group-lg col-9 col-lg-4 mx-auto mt-5">
-                    <input type="text" name="entradaCep" class="from-control mt-4 mx-auto py-2 w-100 border rounded pl-1" placeholder="Digite o cep, apenas números" >
+                    <input type="text" name="entradaCep" maxlength="8" class="from-control mt-4 mx-auto py-2 w-100 border rounded pl-1" placeholder="Digite o cep, apenas números" >
                 </div>
             </div>
 
             <div class="row" style="min-height: 250px;">
                 <div class="col-12 text-center mt-3">
-                    <button onclick="validaEntrada()" type="button" class="busca-js btn btn-outline-warning btn-lg px-4 mx-auto">
+                    <button onclick="consultarCep()" type="button" class="busca-js btn btn-outline-warning btn-lg px-4 mx-auto">
                         Buscar
                     </button>
                 </div>
                 <div class="col-12">
                 <div class="col-10 col-md-5 col-lg-5 mx-auto">
                     <div class="alert mt-3 alert-primary divErro" role="alert" style="display: none;">
-                        <p class="textoErro"></p>
+                        <p class="textoErro text-center"></p>
                         <div class="text-center">
                             <button class="btn btn-outline-dark px-4" type="button" onclick="esconderErro()">OK</button>
                         </div>

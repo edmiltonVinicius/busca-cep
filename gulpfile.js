@@ -1,29 +1,31 @@
-const gulp = require('gulp')
-const { series } = require('gulp')
-const uglify = require('gulp-uglify')
-const uglifycss = require('gulp-uglifycss')
-const rename = require('gulp-rename')
-const babel = require('gulp-babel')
+import gulp from 'gulp'
+import uglify from 'gulp-uglify'
+import uglifycss from 'gulp-uglifycss'
+import rename from 'gulp-rename'
+import babel from 'gulp-babel'
 
 const minCss = () => {
-    return gulp.src('css/*.css')
+    return gulp.src('static/css/style.css')
         .pipe(uglifycss({ 
             "maxLineLen": 80,
             "uglycomments": true 
         }))
-
         .pipe(rename('style.min.css'))
-        .pipe(gulp.dest('css/'))
+        .pipe(gulp.dest('static/css/'))
 }
 
 const minJs = () => {
-    return gulp.src('js/*.js')
+    return gulp.src('static/js/index.js')
         .pipe(babel( {
             presets: ['@babel/preset-env']
         }))
         .pipe(uglify())
         .pipe(rename('index.min.js'))
-        .pipe(gulp.dest('js/'))
+        .pipe(gulp.dest('static/js/'))
 }
 
-module.exports.default = series(minCss, minJs)
+const serverGulp = () => {
+    return gulp.watch(['static/css/style.css', 'static/js/index.js'], gulp.parallel(minCss, minJs))
+}
+
+export default serverGulp
